@@ -15,6 +15,8 @@ class FileService extends FileToolBox
 
     function __construct(string $folder)
     {
+        //Secure
+        $folder = str_replace(".", "", $folder);
 
         //Define vars
         $this->folder = $folder . "/";
@@ -47,6 +49,7 @@ class FileService extends FileToolBox
      */
     function isImageResize(string $root): bool
     {
+        $root = str_replace(".", "", $root);
         return parent::isImageResizeTool($this->folderRoot . $root);
     }
 
@@ -60,6 +63,7 @@ class FileService extends FileToolBox
      */
     function isFile(string $root): bool
     {
+        $root = str_replace(".", "", $root);
         return parent::isFileTool($this->folderRoot . $root);
     }
 
@@ -69,6 +73,7 @@ class FileService extends FileToolBox
      */
     function isFolder(string $root): bool
     {
+        $root = str_replace(".", "", $root);
         return parent::isFolderTool($this->folderRoot . $root);
     }
 
@@ -78,6 +83,7 @@ class FileService extends FileToolBox
      */
     function infos(string $root): ?array
     {
+        $root = str_replace(".", "", $root);
         return parent::infoTools($this->folderRoot . $root);
     }
 
@@ -90,6 +96,7 @@ class FileService extends FileToolBox
      */
     function jsonAdd(string $root, array $arrays): void
     {
+        $root = str_replace(".", "", $root);
         parent::jsonAddTool($this->folderRoot . $root, $arrays);
     }
 
@@ -99,6 +106,7 @@ class FileService extends FileToolBox
      */
     function jsonRead(string $root): ?array
     {
+        $root = str_replace(".", "", $root);
         return parent::jsonReadTool($this->folderRoot . $root);
     }
 
@@ -111,6 +119,7 @@ class FileService extends FileToolBox
      */
     function zipCompress(string $oldRoot, string $newRoot, string $name): void
     {
+        $root = str_replace(".", "", $root);
         parent::zipCompressTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot, $name);
     }
 
@@ -119,6 +128,7 @@ class FileService extends FileToolBox
      */
     function zipUnpress(string $oldRoot, string $newRoot, string $name): void
     {
+        $root = str_replace(".", "", $root);
         parent::zipUnpressTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot, $name);
     }
 
@@ -145,6 +155,7 @@ class FileService extends FileToolBox
      */
     function download(string $root): ?string
     {
+        $root = str_replace(".", "", $root);
         if (parent::isFileTool($this->folderRoot . $root)) {
             return parent::fileDownloadTool($this->folderRoot . $root);
         } else {
@@ -167,6 +178,7 @@ class FileService extends FileToolBox
      */
     function folderScans(string $folder): array
     {
+        $folder = str_replace(".", "", $folder);
         return parent::folderScanTools($this->folderRoot . $folder);
     }
 
@@ -175,6 +187,7 @@ class FileService extends FileToolBox
      */
     function folderClean(string $folder): void
     {
+        $folder = str_replace(".", "", $folder);
         parent::folderCleanTool($this->folderRoot . $folder);
     }
 
@@ -184,6 +197,7 @@ class FileService extends FileToolBox
      */
     function fileAdd(string $base64, string $name, string $newRoot = null, string $rename = null): string
     {
+        $newRoot = str_replace(".", "", $newRoot);
 
         //Define vars
         $cleanBase64 = parent::base64CleanPrefixTool($base64);
@@ -226,6 +240,7 @@ class FileService extends FileToolBox
      */
     function folderAdd(string $folder): void
     {
+        $folder = str_replace(".", "", $folder);
         if (!empty($folder)) {
             parent::folderAddTool($this->folderRoot . $folder);
         }
@@ -236,6 +251,7 @@ class FileService extends FileToolBox
      */
     function delete(string $root): void
     {
+        $root = str_replace(".", "", $root);
         if (!empty($root)) {
             $absoluteRoot = $this->folderRoot . $root;
             if (!parent::isFileTool($absoluteRoot)) {
@@ -270,6 +286,8 @@ class FileService extends FileToolBox
      */
     function rename(string $oldRoot, string $newRoot): void
     {
+        $oldRoot = str_replace(".", "", $oldRoot);
+        $newRoot = str_replace(".", "", $newRoot);
         if (!empty($oldRoot)) {
             if (parent::isFileTool($this->folderRoot . $oldRoot)) {
                 parent::fileRenameTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot);
@@ -284,6 +302,8 @@ class FileService extends FileToolBox
      */
     function copy(string $oldRoot, string $newRoot): void
     {
+        $oldRoot = str_replace(".", "", $oldRoot);
+        $newRoot = str_replace(".", "", $newRoot);
         if (!empty($oldRoot)) {
             if (parent::isFileTool($this->folderRoot . $oldRoot)) {
                 parent::fileCopyTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot);
@@ -298,6 +318,8 @@ class FileService extends FileToolBox
      */
     function move(string $oldRoot, string $newRoot): void
     {
+        $oldRoot = str_replace(".", "", $oldRoot);
+        $newRoot = str_replace(".", "", $newRoot);
         if (!empty($oldRoot)) {
             if (parent::isFileTool($this->folderRoot . $oldRoot)) {
                 parent::fileMoveTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot);
