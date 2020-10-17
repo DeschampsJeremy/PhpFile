@@ -25,7 +25,7 @@ use DeschampsJeremy\FileService;
 
 - Construct on your controller :
 ```
-$fileService = new FileService('testFolder'));
+$fileService = new FileService('testFolder');
 ```
 Script will automatically create an `uploaded` folder to contains `uploaded\tmp`, `uploaded\testFolder` directories.
 

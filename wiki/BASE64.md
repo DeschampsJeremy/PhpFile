@@ -1,4 +1,4 @@
-- [Home page](/wiki)
+[Home page](/wiki)
 # BASE64
 
 ## static base64Infos(string $base64): ?array

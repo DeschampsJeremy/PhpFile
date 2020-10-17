@@ -1,4 +1,4 @@
-- [Home page](/wiki)
+[Home page](/wiki)
 # ZIP
 
 ## zipCompress(string $oldRoot, string $newRoot, string $name): void

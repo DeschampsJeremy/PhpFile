@@ -1,4 +1,4 @@
-- [Home page](/wiki)
+[Home page](/wiki)
 # FILE & FOLDER
 
 ## download(string $root): ?string

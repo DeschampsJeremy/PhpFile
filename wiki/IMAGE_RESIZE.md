@@ -1,4 +1,4 @@
-- [Home page](/wiki)
+[Home page](/wiki)
 # IMAGE RESIZE 
 
 ## isImageResize(string $root): bool
