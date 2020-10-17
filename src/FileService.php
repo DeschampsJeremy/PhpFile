@@ -13,7 +13,7 @@ class FileService extends FileToolBox
     private $folder;
     private $folderRoot;
 
-    function __construct(string $folder, array $config)
+    function __construct(string $folder)
     {
 
         //Define vars
