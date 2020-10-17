@@ -4,7 +4,7 @@ namespace DeschampsJeremy;
 
 class FileService extends FileToolBox
 {
-    private $upload_folder_root = "./../uploaded/";
+    const UPLOAD_FOLDER_ROOT = "./../uploaded/";
     private $caches = [
         ['prefix' => '', 'size' => 1500],
         ['prefix' => 'c1_', 'size' => 800],
@@ -18,17 +18,17 @@ class FileService extends FileToolBox
 
         //Define vars
         $this->folder = $folder . "/";
-        $this->folderRoot = $this->upload_folder_root . $this->folder;
-        $scans = parent::folderScanTools($this->upload_folder_root);
+        $this->folderRoot = self::UPLOAD_FOLDER_ROOT . $this->folder;
+        $scans = parent::folderScanTools(self::UPLOAD_FOLDER_ROOT);
 
         //If files uploaded folder not exist create it
-        if (!parent::isFolderTool($this->upload_folder_root)) {
-            parent::folderAddTool($this->upload_folder_root);
+        if (!parent::isFolderTool(self::UPLOAD_FOLDER_ROOT)) {
+            parent::folderAddTool(self::UPLOAD_FOLDER_ROOT);
         }
 
         //If "tmp" folder not exist create it
         if (!in_array("tmp", $scans)) {
-            parent::folderAddTool($this->upload_folder_root . "tmp");
+            parent::folderAddTool(self::UPLOAD_FOLDER_ROOT . "tmp");
         }
 
         //If target folder not exist create it
@@ -154,9 +154,9 @@ class FileService extends FileToolBox
             } else {
                 $folderName = $root;
             }
-            parent::zipCompressTool($this->folderRoot . $root, $this->upload_folder_root . 'tmp', $folderName);
-            $fileString = parent::fileDownloadTool($this->upload_folder_root . 'tmp/' . $folderName . '.zip');
-            parent::fileDeleteTool($this->upload_folder_root . 'tmp/' . $folderName . '.zip');
+            parent::zipCompressTool($this->folderRoot . $root, self::UPLOAD_FOLDER_ROOT . 'tmp', $folderName);
+            $fileString = parent::fileDownloadTool(self::UPLOAD_FOLDER_ROOT . 'tmp/' . $folderName . '.zip');
+            parent::fileDeleteTool(self::UPLOAD_FOLDER_ROOT . 'tmp/' . $folderName . '.zip');
             return $fileString;
         }
     }
@@ -200,7 +200,7 @@ class FileService extends FileToolBox
         }
 
         //Create tmp file
-        $rootTmp = $this->upload_folder_root . "tmp/" . $newName;
+        $rootTmp = self::UPLOAD_FOLDER_ROOT . "tmp/" . $newName;
         parent::fileAddTool($rootTmp, $fileString);
 
         //Create file
