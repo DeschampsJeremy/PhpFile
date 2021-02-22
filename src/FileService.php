@@ -119,7 +119,7 @@ class FileService extends FileToolBox
      */
     function zipCompress(string $oldRoot, string $newRoot, string $name): void
     {
-        $root = str_replace(".", "", $root);
+        $root = str_replace(".", "", $oldRoot);
         parent::zipCompressTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot, $name);
     }
 
@@ -128,7 +128,7 @@ class FileService extends FileToolBox
      */
     function zipUnpress(string $oldRoot, string $newRoot, string $name): void
     {
-        $root = str_replace(".", "", $root);
+        $root = str_replace(".", "", $oldRoot);
         parent::zipUnpressTool($this->folderRoot . $oldRoot, $this->folderRoot . $newRoot, $name);
     }
 
