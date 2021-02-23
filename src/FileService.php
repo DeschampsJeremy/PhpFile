@@ -155,7 +155,6 @@ class FileService extends FileToolBox
      */
     function download(string $root): ?string
     {
-        $root = str_replace(".", "", $root);
         if (parent::isFileTool($this->folderRoot . $root)) {
             return parent::fileDownloadTool($this->folderRoot . $root);
         } else {
