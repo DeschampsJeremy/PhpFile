@@ -6,7 +6,7 @@ class FileService extends FileToolBox
 {
     const UPLOAD_FOLDER_ROOT = "./../uploaded/";
     private $caches = [
-        ['prefix' => '', 'size' => 1500],
+        ['prefix' => '', 'size' => 1000],
         ['prefix' => 'c1_', 'size' => 800],
         ['prefix' => 'c2_', 'size' => 200],
     ];
