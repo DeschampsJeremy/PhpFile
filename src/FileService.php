@@ -250,7 +250,6 @@ class FileService extends FileToolBox
      */
     function delete(string $root): void
     {
-        $root = str_replace(".", "", $root);
         if (!empty($root)) {
             $absoluteRoot = $this->folderRoot . $root;
             if (!parent::isFileTool($absoluteRoot)) {
