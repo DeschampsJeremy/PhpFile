@@ -39,6 +39,15 @@ class FileService extends FileToolBox
         }
     }
 
+    /**
+     * Get folder root
+     * @return string The absolute folder root
+     */
+    function getFolderRoot(): string
+    {
+        return $this->folderRoot;
+    }
+    
     //////////////////////////////////////////////////////////////////////////////
     //RESIZE
     //////////////////////////////////////////////////////////////////////////////
