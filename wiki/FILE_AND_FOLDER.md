@@ -230,14 +230,14 @@ Remove a root (use from file or folder)
 ```
 var_dump([
     0 => $fileService->delete('jpg_1200x800.jpg'),
-    1 => $fileService->delete('myFolder/jpg_1200x800.jpg'),
+    1 => $fileService->delete('myFolder/jpg_1200x800.jpg', false),
     2 => $fileService->delete('myFolder/otherFolder'),
     3 => $fileService->delete(''),
 ]);
 
 array(3) {
-    [0]=> //Delete file
-    [1]=> //Delete file
+    [0]=> //Delete file and caches
+    [1]=> //Delete file but not caches
     [2]=> //Delete folder and content
     [3]=> //Nothing
 }

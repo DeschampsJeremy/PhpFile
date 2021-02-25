@@ -257,7 +257,7 @@ class FileService extends FileToolBox
     /**
      * Remove a root (use from file or folder)
      */
-    function delete(string $root): void
+    function delete(string $root, bool $isResize = true): void
     {
         if (!empty($root)) {
             $absoluteRoot = $this->folderRoot . $root;
@@ -277,7 +277,7 @@ class FileService extends FileToolBox
                     $rootName = "";
                     $fileName = $root;
                 }
-                if (parent::isImageResizeTool($absoluteRoot)) {
+                if (parent::isImageResizeTool($absoluteRoot) && $isResize) {
                     foreach ($this->caches as $caches) {
                         parent::fileDeleteTool($this->folderRoot . $rootName . $caches['prefix'] . $fileName);
                     }
