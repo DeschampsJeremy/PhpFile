@@ -203,7 +203,7 @@ class FileService extends FileToolBox
      * Create a file from base64 string, generate images caches, replace if exist, generate a base64 file on [base64.guru](https://base64.guru/converter/encode/file)
      * @return string The file root
      */
-    function fileAdd(string $base64, string $name, string $newRoot = null, string $rename = null): string
+    function fileAdd(string $base64, string $name, string $newRoot = null, string $rename = null, bool $isResize = true): string
     {
         $newRoot = str_replace(".", "", $newRoot);
 
@@ -226,7 +226,7 @@ class FileService extends FileToolBox
         parent::fileAddTool($rootTmp, $fileString);
 
         //Create file
-        if (parent::isImageResizeTool($rootTmp)) {
+        if (parent::isImageResizeTool($rootTmp) && $isResize) {
 
             //Create resize caches copies
             foreach ($this->caches as $caches) {

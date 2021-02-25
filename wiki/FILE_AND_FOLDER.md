@@ -192,7 +192,7 @@ Create a file from base64 string, generate images caches, replace if exist, gene
 ```
 var_dump([
     0 => $fileService->fileAdd($base64Jpg, 'newJpg.jpg', '', null),
-    1 => $fileService->fileAdd($base64Png, 'newPng.png', 'myFolder/otherFolder', null),
+    1 => $fileService->fileAdd($base64Png, 'newPng.png', 'myFolder/otherFolder', null, false),
     2 => $fileService->fileAdd($base64Pdf, 'newPdf.pdf', '', 'renamedPdf'),
     3 => $fileService->fileAdd('', 'newJpg.jpg', '', null),
     4 => $fileService->fileAdd('noBase64File', 'newJpg.jpg', '', null),
@@ -200,7 +200,7 @@ var_dump([
 
 array(5) {
     [0]=> string(32) "20201007001416_5f7d08587807f.jpg" //Create file and caches resized on testFolder
-    [1]=> string(32) "20201007001417_5f7d085983570.png" //Create file and caches rezized on testFolder/myFolder/otherFolder
+    [1]=> string(32) "20201007001417_5f7d085983570.png" //Create file no caches on testFolder/myFolder/otherFolder
     [2]=> string(14) "renamedPdf.pdf" //Create file on testFolder
     [3]=> string(32) "20201007001420_5f7d085cd4531.jpg" //Create an unreadable file on testFolder
     [4]=> string(32) "20201007001420_5f7d085cd56f1.jpg" //Create an unreadable file on testFolder
