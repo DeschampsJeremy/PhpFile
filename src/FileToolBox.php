@@ -81,7 +81,7 @@ class FileToolBox
     protected static function isImageResizeTool(string $root): bool
     {
         $typeMime = self::typeTool($root);
-        return ($typeMime === "image/png" || $typeMime === "image/jpeg");
+        return ($typeMime === "image/png" || $typeMime === "image/jpeg" || $typeMime === "image/webp");
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -217,8 +217,11 @@ class FileToolBox
             case "image/png":
                 $fileRes = imagecreatefrompng($imageFile);
                 break;
-            default:
+            case "image/jpeg":
                 $fileRes = imagecreatefromjpeg($imageFile);
+                break;
+            default:
+                $fileRes = imagecreatefromwebp($imageFile);
         }
         $newFileRes = imagecreatetruecolor($newFileWidth, $newFileHeight);
         imagecopyresampled($newFileRes, $fileRes, 0, 0, 0, 0, $newFileWidth, $newFileHeight, $fileWidth, $fileHeight);
@@ -227,8 +230,11 @@ class FileToolBox
             case "image/png":
                 imagepng($newFileRes);
                 break;
+            case "image/jpeg":
+                imagepng($newFileRes);
+                break;
             default:
-                imagejpeg($newFileRes);
+                imagewebp($newFileRes);
         }
         $imageString = ob_get_clean();
         return $imageString;
